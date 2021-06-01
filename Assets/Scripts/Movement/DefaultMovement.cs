@@ -9,7 +9,7 @@ public class DefaultMovement : IMoveable
     private float rotationSpeed = 180f;
     [Inject]
     private Rigidbody rigidbody;
-    [Inject]
+    [Inject (Id ="movementTransform")]
     private Transform transform;
 
     public void Move(Vector3 direction)

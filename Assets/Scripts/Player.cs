@@ -18,8 +18,10 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movement.Move(controller.MovementVector3);
-        movement.RotateRight(controller.RotationStrength);
+        Vector3 moveDirection = controller.MovementVector3;
+        movement.Move(moveDirection);
+        float rotationStrength = controller.RotationStrength;
+        movement.RotateRight(rotationStrength);
     }
 
 }
