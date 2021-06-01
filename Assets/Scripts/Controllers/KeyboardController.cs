@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,5 +21,14 @@ public class KeyboardController : IController
             else
                 return 0;
         }
+    }
+
+    public GameObject HoveredGameObject => throw new NotImplementedException();
+
+    public bool MouseClicked => throw new NotImplementedException();
+
+    public void Tick()
+    {
+        throw new NotImplementedException();
     }
 }

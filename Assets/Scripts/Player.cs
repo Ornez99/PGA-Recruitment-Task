@@ -2,7 +2,6 @@ using Zenject;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -20,6 +19,11 @@ public class Player : MonoBehaviour
     {
         Vector3 moveDirection = controller.MovementVector3;
         movement.Move(moveDirection);
+    }
+
+    private void Update()
+    {
+        controller.Tick();
         float rotationStrength = controller.RotationStrength;
         movement.RotateRight(rotationStrength);
     }
