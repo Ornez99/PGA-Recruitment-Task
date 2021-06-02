@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class Chest : MonoBehaviour, IInteractable
+public class Chest : MonoBehaviour
 {
     [Inject]
     private TwoOptionsWindowFactory twoOptionsWindowFactory;
@@ -15,6 +15,16 @@ public class Chest : MonoBehaviour, IInteractable
     [SerializeField]
     private new BoxCollider collider = default;
 
+    private Interactable interactable;
+
+    private void Start()
+    {
+        interactable = GetComponent<Interactable>();
+        interactable.HighlightEvent += Highlight;
+        interactable.UnhighlightEvent += Unhighlight;
+        interactable.InteractEvent += Interact;
+    }
+
     public void Highlight()
     {
         skinnedMeshRenderer.material.SetColor("_Color", Color.red);
@@ -25,10 +35,7 @@ public class Chest : MonoBehaviour, IInteractable
         if (isOpened == false && windowIsOpened == false)
         {
             windowIsOpened = true;
-            WindowOption[] options = new WindowOption[2];
-            options[0] = new WindowOption(OpenChest, "Otworz");
-            options[1] = new WindowOption(CloseWindow, "Nie otwieraj");
-            twoOptionsWindowFactory.CreateWindow("Skrzynia", "Czy chcesz otworzyc skrzynie?", options);
+            DisplayOpenChestWindow();
         }
     }
 
@@ -40,6 +47,14 @@ public class Chest : MonoBehaviour, IInteractable
     public void CloseWindow()
     {
         windowIsOpened = false;
+    }
+
+    private void DisplayOpenChestWindow()
+    {
+        WindowOption[] options = new WindowOption[2];
+        options[0] = new WindowOption(OpenChest, "Otworz");
+        options[1] = new WindowOption(CloseWindow, "Nie otwieraj");
+        twoOptionsWindowFactory.CreateWindow("Skrzynia", "Czy chcesz otworzyc skrzynie?", options);
     }
 
     public void OpenChest()

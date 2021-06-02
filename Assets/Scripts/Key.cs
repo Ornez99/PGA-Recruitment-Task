@@ -1,9 +1,8 @@
 using UnityEngine;
 using Zenject;
 
-public class Key : MonoBehaviour, IInteractable
+public class Key : MonoBehaviour
 {
-
     [Inject]
     private TwoOptionsWindowFactory twoOptionsWindowFactory;
 
@@ -16,6 +15,16 @@ public class Key : MonoBehaviour, IInteractable
 
     private GameObject interactedBy;
 
+    private Interactable interactable;
+
+    private void Start()
+    {
+        interactable = GetComponent<Interactable>();
+        interactable.HighlightEvent += Highlight;
+        interactable.UnhighlightEvent += Unhighlight;
+        interactable.InteractEvent += Interact;
+    }
+
     public void Highlight()
     {
         meshRenderer.material.SetColor("_Color", Color.red);
@@ -26,13 +35,17 @@ public class Key : MonoBehaviour, IInteractable
         if (windowIsOpened == false)
         {
             this.interactedBy = interactedBy;
-
             windowIsOpened = true;
-            WindowOption[] options = new WindowOption[2];
-            options[0] = new WindowOption(PickKey, "Podnies");
-            options[1] = new WindowOption(CloseWindow, "Nie podnos");
-            twoOptionsWindowFactory.CreateWindow("Klucz", "Czy chcesz podniesc klucz?", options);
+            DisplayOpenChestWindow();
         }
+    }
+
+    private void DisplayOpenChestWindow()
+    {
+        WindowOption[] options = new WindowOption[2];
+        options[0] = new WindowOption(PickKey, "Podnies");
+        options[1] = new WindowOption(CloseWindow, "Nie podnos");
+        twoOptionsWindowFactory.CreateWindow("Klucz", "Czy chcesz podniesc klucz?", options);
     }
 
     public void Unhighlight()

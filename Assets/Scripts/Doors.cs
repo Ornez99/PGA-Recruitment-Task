@@ -1,24 +1,32 @@
 using UnityEngine;
+using System;
 using Zenject;
+using System.Collections;
 
-public class Doors : MonoBehaviour, IInteractable
+public class Doors : MonoBehaviour
 {
     [Inject]
     private TwoOptionsWindowFactory twoOptionsWindowFactory;
-
     [Inject]
     private OneOptionWindowFactory oneOptionWindowFactory;
-
-    private bool windowIsOpened = false;
     [SerializeField]
     private MeshRenderer meshRenderer;
-
-    private GameObject interactedBy;
-
     [SerializeField]
     private ItemData keyData;
+    private bool windowIsOpened = false;
 
+    public event Action ChangeDoorStateEvent;
     public bool DoorsOpened { get; private set; }
+
+    private Interactable interactable;
+
+    private void Start()
+    {
+        interactable = GetComponent<Interactable>();
+        interactable.HighlightEvent += Highlight;
+        interactable.UnhighlightEvent += Unhighlight;
+        interactable.InteractEvent += Interact;
+    }
 
     public void Highlight()
     {
@@ -29,9 +37,8 @@ public class Doors : MonoBehaviour, IInteractable
     {
         if (windowIsOpened == false)
         {
-            this.interactedBy = interactedBy;
             Equipment equipment = interactedBy.GetComponent<Equipment>();
-            if( equipment.HaveItem(keyData))
+            if (equipment.HaveItem(keyData))
                 DisplayOpenDoorsWindow();
             else
                 DisplayClosedDoorsWindow();
@@ -68,5 +75,13 @@ public class Doors : MonoBehaviour, IInteractable
     private void OpenDoors()
     {
         DoorsOpened = true;
+        StartCoroutine(ChangeDoorsState());
+    }
+
+    private IEnumerator ChangeDoorsState()
+    {
+        yield return new WaitForSeconds(1);
+        if (ChangeDoorStateEvent != null)
+            ChangeDoorStateEvent();
     }
 }

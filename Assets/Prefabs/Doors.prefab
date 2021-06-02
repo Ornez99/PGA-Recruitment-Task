@@ -92,7 +92,8 @@ GameObject:
   - component: {fileID: 5544704818902259552}
   - component: {fileID: 5544704818902259555}
   - component: {fileID: 5544704818902259553}
-  - component: {fileID: 476455018}
+  - component: {fileID: 162575008}
+  - component: {fileID: 5388631669141172809}
   m_Layer: 0
   m_Name: Doors
   m_TagString: Untagged
@@ -143,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 5544704819347728126}
   keyData: {fileID: 11400000, guid: dfea2d4c44c0d8549989c0f5a867353f, type: 2}
---- !u!114 &476455018
+--- !u!114 &162575008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,7 +153,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5544704818902259554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1bc5f06fbaf4c644a7499f3d58ccdf6, type: 3}
+  m_Script: {fileID: 11500000, guid: 321ff4bc8fcfbcc46b1c9c010eacf052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5388631669141172809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5544704818902259554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09203c8e8757fb548b91314f4bafc7f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5544704819347728112

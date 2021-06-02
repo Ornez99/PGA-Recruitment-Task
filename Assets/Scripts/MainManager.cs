@@ -44,5 +44,4 @@ public class MainManager : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
-
 }
