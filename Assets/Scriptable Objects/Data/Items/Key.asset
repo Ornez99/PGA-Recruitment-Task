@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cc1b68f5f993fc47b18a30ef8c63a21, type: 3}
-  m_Name: Best time
+  m_Script: {fileID: 11500000, guid: 9cc189dcd2bd06749a18fca29e4ed16f, type: 3}
+  m_Name: Key
   m_EditorClassIdentifier: 
-  value: 999
+  itemName: Key
+  description: Key to doors.

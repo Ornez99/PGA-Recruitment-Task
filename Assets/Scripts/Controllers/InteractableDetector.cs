@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -9,11 +7,17 @@ public class InteractableDetector : MonoBehaviour
     [Inject]
     private IController controller;
 
+    [Inject]
+    private MainManager mainManager;
+
     [SerializeField]
     private float interactDistance;
 
     public void Update()
     {
+        if (mainManager.GameStarted == false)
+            return;
+
         GameObject potentialInteractableGO = controller.HoveredGameObject;
         IInteractable potentialInteractable = potentialInteractableGO?.GetComponent<IInteractable>();
 
@@ -22,20 +26,20 @@ public class InteractableDetector : MonoBehaviour
 
         if (potentialInteractable == null)
         {
-            currentInteractable?.Unhighlight();
+            if (currentInteractable != null)
+                currentInteractable.Unhighlight();
             currentInteractable = null;
             return;
         }
         else if (currentInteractable != potentialInteractable)
         {
-            currentInteractable?.Unhighlight();
+            if (currentInteractable != null)
+                currentInteractable.Unhighlight();
             currentInteractable = potentialInteractable;
             currentInteractable.Highlight();
         }
 
         if (controller.MouseClicked)
-            currentInteractable.Interact();
+            currentInteractable.Interact(gameObject);
     }
-
-
 }

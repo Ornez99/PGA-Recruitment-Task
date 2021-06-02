@@ -9,18 +9,15 @@ public class TimeManager : MonoBehaviour
     private FloatVariable bestTime;
     [SerializeField]
     private FloatVariable currentTime;
-
     [SerializeField]
     private Text bestTimeText;
     [SerializeField]
     private Text currentTimeText;
-
     private bool countTheTime;
 
     private void Awake()
     {
         bestTimeText.text = $"Najlepszy czas:{bestTime.Value}";
-        Time.timeScale = 0;
     }
 
     private void Update()
@@ -37,11 +34,26 @@ public class TimeManager : MonoBehaviour
         currentTime.Value = 0;
     }
 
+    public void IfTimeIsBestSaveIt()
+    {
+        if (currentTime.Value < bestTime.Value)
+        {
+            bestTime.Value = currentTime.Value;
+        }
+    }
+
+    public void DisplayBestTime()
+    {
+        bestTimeText.text = $"Najlepszy czas:{bestTime.Value}";
+    }
+
     public void StartCountingTime()
     {
         countTheTime = true;
-        Time.timeScale = 1;
     }
 
-    
+    public void StopCountingTime()
+    {
+        countTheTime = false;
+    }
 }

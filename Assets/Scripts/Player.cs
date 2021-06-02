@@ -1,10 +1,11 @@
-using Zenject;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class Player : MonoBehaviour
 {
+    [Inject]
+    private MainManager mainManager;
+
     private IController controller;
     private IMoveable movement;
 
@@ -17,15 +18,25 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (mainManager.GameStarted == false)
+            return;
+
         Vector3 moveDirection = controller.MovementVector3;
         movement.Move(moveDirection);
     }
 
     private void Update()
     {
-        controller.Tick();
+        if (mainManager.GameStarted == false)
+            return;
+
         float rotationStrength = controller.RotationStrength;
         movement.RotateRight(rotationStrength);
+    }
+
+    private void LateUpdate()
+    {
+        controller.Tick();
     }
 
 }
