@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
+using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class MainManager : MonoBehaviour
 
     [SerializeField]
     private GameObject tryAgainGO;
+    [SerializeField]
+    private Text text_opinion;
+    [SerializeField]
+    private GameObject gratulationsGO;
 
     public void StartGame()
     {
@@ -25,9 +30,9 @@ public class MainManager : MonoBehaviour
     public void WinGame()
     {
         timeManager.StopCountingTime();
+        DisplayTryAgainWindow();
         timeManager.IfTimeIsBestSaveIt();
         timeManager.DisplayBestTime();
-        DisplayTryAgainWindow();
     }
 
     private void DisableStartUI()
@@ -38,6 +43,19 @@ public class MainManager : MonoBehaviour
     private void DisplayTryAgainWindow()
     {
         tryAgainGO.SetActive(true);
+        string opinion = $"Twój czas to: {timeManager.CurrentTime}";
+        opinion += $"\nNajpeszy czas to: {timeManager.BestTime}";
+        if(timeManager.CurrentTime >= timeManager.BestTime)
+        {
+            opinion += "\nNiestety, nie udalo Ci sie osiagnac lepszego czasu :(";
+            gratulationsGO.SetActive(false);
+        }
+        else
+        {
+            opinion += "\nSuper! Rekord nalezy do Ciebie!";
+        }
+
+        text_opinion.text = opinion;
     }
 
     public void RestartGame()

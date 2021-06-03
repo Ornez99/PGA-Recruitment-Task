@@ -5,12 +5,24 @@ using Zenject;
 
 public class DefaultMovement : IMoveable
 {
-    private float movementSpeed = 5f;
+    private float movementSpeed = 2f;
     private float rotationSpeed = 180f;
     [Inject]
     private Rigidbody rigidbody;
     [Inject (Id ="movementTransform")]
     private Transform transform;
+    private SpeedModifier speedModifier;
+
+    public DefaultMovement()
+    {
+
+    }
+
+    [Inject]
+    public DefaultMovement(SpeedModifier speedModifier)
+    {
+        this.speedModifier = speedModifier;
+    }
 
     public void Move(Vector3 direction)
     {
@@ -25,6 +37,6 @@ public class DefaultMovement : IMoveable
     private void UpdatePosition(Vector3 direction)
     {
         Vector3 localDirection = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0) * direction;
-        rigidbody.MovePosition(transform.position + localDirection * Time.fixedDeltaTime * movementSpeed);
+        rigidbody.MovePosition(transform.position + localDirection * Time.fixedDeltaTime * movementSpeed * speedModifier.GetSpeed());
     }
 }
