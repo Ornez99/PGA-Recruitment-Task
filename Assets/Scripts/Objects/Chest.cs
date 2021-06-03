@@ -18,7 +18,6 @@ public class Chest : MonoBehaviour
     private Equipment equipment;
     [SerializeField] private AudioSource audioSource;
 
-
     private Interactable interactable;
 
     private void Start()

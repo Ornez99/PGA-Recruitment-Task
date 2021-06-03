@@ -1299,6 +1299,7 @@ GameObject:
   - component: {fileID: 740654069}
   - component: {fileID: 740654071}
   - component: {fileID: 740654070}
+  - component: {fileID: 740654072}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -1381,6 +1382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartGameObject: {fileID: 901313628}
+  saveManager: {fileID: 740654072}
   tryAgainGO: {fileID: 1283108547}
   text_opinion: {fileID: 1324006885}
   gratulationsGO: {fileID: 664295973}
@@ -1434,6 +1436,21 @@ MonoBehaviour:
   oneOptionWindowGO: {fileID: 2905777387352793007, guid: aa964c01fb2222f4dbb10384635f7e42, type: 3}
   windowOptionGO: {fileID: 6112637806846841029, guid: b75dcaa8de6feb74599b9b9ced3ec12b, type: 3}
   windowsContainerGO: {fileID: 1659654034}
+--- !u!114 &740654072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740654064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66451ba6f09a0e3458b0cbac4bc2a392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quitGame: {fileID: 53429197}
+  bestTime: {fileID: 11400000, guid: 2fd2ba7d17945054fb0b93b6e9a3ac95, type: 2}
+  currentTime: {fileID: 11400000, guid: 578db88884908b94cbe48162b1eaeb2f, type: 2}
 --- !u!1 &774000544
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -7,6 +8,8 @@ public class QuitGame : MonoBehaviour
     private TwoOptionsWindowFactory twoOptionsWindowFactory;
 
     private bool windowIsOpened = false;
+
+    public event Action QuitEvent;
 
     public void Quit()
     {
@@ -32,6 +35,8 @@ public class QuitGame : MonoBehaviour
 
     private void QuitToWindows()
     {
+        if (QuitEvent != null)
+            QuitEvent();
         Application.Quit();
     } 
 }

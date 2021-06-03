@@ -9,6 +9,7 @@ public class MainManager : MonoBehaviour
     private GameObject StartGameObject;
     [Inject]
     private TimeManager timeManager;
+    [SerializeField] private SaveManager saveManager;
 
     public bool GameStarted { get; set; }
 
@@ -60,6 +61,7 @@ public class MainManager : MonoBehaviour
 
     public void RestartGame()
     {
+        saveManager.Save();
         SceneManager.LoadScene("Game");
     }
 }

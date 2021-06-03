@@ -18,9 +18,9 @@ public class TimeManager : MonoBehaviour
     public float BestTime { get => bestTime.Value; }
     public float CurrentTime { get => currentTime.Value; }
 
-    private void Awake()
+    private void Start()
     {
-        bestTimeText.text = $"Najlepszy czas:{bestTime.Value}";
+        DisplayBestTime();
     }
 
     private void Update()
