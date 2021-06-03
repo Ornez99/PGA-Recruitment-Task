@@ -8,12 +8,15 @@ public class Equipment : MonoBehaviour
     [SerializeField]
     private List<Item> items = new List<Item>();
 
+    [SerializeField] private AudioSource audioSource;
+
     public List<Item> Items { get => items; }
 
     public void AddItem(ItemData itemData)
     {
         Item newItem = new Item(itemData);
         items.Add(newItem);
+        audioSource?.Play();
     }
 
     public bool HaveItem(ItemData itemData)

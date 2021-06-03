@@ -9,6 +9,8 @@ public class Doors : MonoBehaviour
     private TwoOptionsWindowFactory twoOptionsWindowFactory;
     private OneOptionWindowFactory oneOptionWindowFactory;
 
+    [SerializeField] private AudioSource audioSource;
+
     [SerializeField]
     private List<MeshRenderer> meshRenderers;
     [SerializeField]
@@ -93,6 +95,7 @@ public class Doors : MonoBehaviour
         DoorsOpened = true;
         animator.SetBool("Opened", DoorsOpened);
         StartCoroutine(ChangeDoorsState());
+        audioSource?.Play();
     }
 
     private IEnumerator ChangeDoorsState()

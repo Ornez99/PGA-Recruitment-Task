@@ -16,6 +16,8 @@ public class Chest : MonoBehaviour
     private new BoxCollider collider = default;
     [SerializeField]
     private Equipment equipment;
+    [SerializeField] private AudioSource audioSource;
+
 
     private Interactable interactable;
 
@@ -72,8 +74,15 @@ public class Chest : MonoBehaviour
         windowIsOpened = false;
         collider.enabled = false;
         StartCoroutine(equipment.DropItems());
+        StartCoroutine(PlayOpenSound());
     }
 
+    private IEnumerator PlayOpenSound()
+    {
+        audioSource.Play();
+        yield return new WaitForSeconds(1);
+        audioSource.Stop();
+    }
     
 
     public class Factory : PlaceholderFactory<Chest> { }
