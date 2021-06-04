@@ -8,6 +8,7 @@ public class Node
     public int xId;
     public int yId;
     public float speed;
+    public GroundType groundType;
 
     public Node(bool buildable, int xId, int yId)
     {

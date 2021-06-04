@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using Zenject;
 
 public class Key : MonoBehaviour
@@ -7,6 +8,13 @@ public class Key : MonoBehaviour
     private bool windowIsOpened = false;
     [SerializeField] private ItemData keyData;
     private GameObject interactedBy;
+
+    public UnityEvent<Vector3> PickUpEvent;
+
+    private void Start()
+    {
+        
+    }
 
     [Inject]
     public void Construct(TwoOptionsWindowFactory twoOptionsWindowFactory)
@@ -41,6 +49,8 @@ public class Key : MonoBehaviour
     {
         Equipment equipment = interactedBy.GetComponent<Equipment>();
         equipment.AddItem(keyData);
+        if (PickUpEvent != null)
+            PickUpEvent.Invoke(transform.position);
         Destroy(gameObject);
     }
 

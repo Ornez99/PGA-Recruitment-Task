@@ -63,9 +63,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: -4796619959617532960}
-  meshRenderers:
-  - {fileID: 6319355995509413205}
-  - {fileID: 6319540347086320635}
   keyData: {fileID: 11400000, guid: dfea2d4c44c0d8549989c0f5a867353f, type: 2}
   animator: {fileID: 2409639098300128151}
 --- !u!114 &162575008
@@ -369,8 +366,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6333285020963378847}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.439, y: 0, z: 0}
-  m_LocalScale: {x: 0.69, y: 0.75, z: 0.5}
+  m_LocalPosition: {x: 0.489, y: 0, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.5}
   m_Children:
   - {fileID: 6337017139891943041}
   - {fileID: 6336808412987954915}

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5426477492200671268}
   - component: {fileID: 8048000013242942556}
   - component: {fileID: 7064757998076104532}
+  - component: {fileID: 4481321351836032203}
+  - component: {fileID: 4890806005811561080}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -60,8 +62,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ffcb714ca898e746989b6df6788f4ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 5672537270759457649}
   keyData: {fileID: 11400000, guid: dfea2d4c44c0d8549989c0f5a867353f, type: 2}
+  PickUpEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4481321351836032203}
+        m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
+        m_MethodName: SpawnObjectForSeconds
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4890806005811561080}
+        m_TargetAssemblyTypeName: Shaker, Assembly-CSharp
+        m_MethodName: Shake
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8048000013242942556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +174,32 @@ MonoBehaviour:
   UnhighlightEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4481321351836032203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5426477492200671259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4afda3288ae7e604384cf8319f99a807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 4564974904822370674, guid: c13d9f339aa17cd418765508bae2969e, type: 3}
+  secondsToDestroy: 1
+--- !u!114 &4890806005811561080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5426477492200671259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9988633c40828b548bdf70d66a1997e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6031884027768830006
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -19,7 +20,7 @@ public class Map : MonoBehaviour
         PlaceDoors();
         PlaceChest();
         GenerateWalls();
-        CreateGroundTexture();
+        CreateGroundTypeAndTexture();
         SetGroundTextureAndSize();
     }
     
@@ -136,7 +137,7 @@ public class Map : MonoBehaviour
         }
     }
 
-    private void CreateGroundTexture()
+    private void CreateGroundTypeAndTexture()
     {
         groundTexture2D = new Texture2D(size, size);
         int seed = Random.Range(0, 9999);
@@ -149,6 +150,7 @@ public class Map : MonoBehaviour
                 float textureAStrength = (groundNoise[x, y] >= 0.5f) ? 1 : 0;
                 float textureBStrength = 1 - textureAStrength;
                 grid[x,y].speed = (groundNoise[x, y] >= 0.5f) ? slowGroundSpeed : fastGroundSpeed;
+                grid[x,y].groundType = (groundNoise[x, y] >= 0.5f) ? GroundType.Mud : GroundType.Stone;
                 groundTexture2D.SetPixel(x, y, new Color(textureAStrength, textureBStrength, 0, 0));
             }
         }
