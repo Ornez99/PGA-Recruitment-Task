@@ -11,9 +11,13 @@ public class OpenDoorsWinCondition : MonoBehaviour
         this.mainManager = mainManager;
     }
 
-    void Start()
+    private void Start()
     {
-        Doors doors = GetComponent<Doors>();
-        doors.ChangeDoorStateEvent += mainManager.WinGame;
+        GetComponent<Doors>().ChangeDoorStateEvent += WinGame;
+    }
+
+    public void WinGame()
+    {
+        mainManager.WinGame();
     }
 }

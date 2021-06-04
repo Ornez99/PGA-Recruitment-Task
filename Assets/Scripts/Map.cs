@@ -139,7 +139,8 @@ public class Map : MonoBehaviour
     private void CreateGroundTexture()
     {
         groundTexture2D = new Texture2D(size, size);
-        float[,] groundNoise = Noise.GenerateNoiseMap(size, 0, 1, 4, 1, 0.5f, Vector2.zero);
+        int seed = Random.Range(0, 9999);
+        float[,] groundNoise = Noise.GenerateNoiseMap(size, seed, 1, 4, 1, 0.5f, Vector2.zero);
 
         for (int y = 0; y < size; y++)
         {

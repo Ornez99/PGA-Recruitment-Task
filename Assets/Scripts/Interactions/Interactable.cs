@@ -1,27 +1,28 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour, IInteractable
 {
-    public event Action HighlightEvent;
-    public event Action UnhighlightEvent;
-    public event Action<GameObject> InteractEvent;
+    public UnityEvent HighlightEvent;
+    public UnityEvent UnhighlightEvent;
+    public UnityEvent<GameObject> InteractEvent;
 
     public void Highlight()
     {
         if (HighlightEvent != null)
-            HighlightEvent();
+            HighlightEvent.Invoke();
     }
 
     public void Interact(GameObject interactedBy)
     {
         if (InteractEvent != null)
-            InteractEvent(interactedBy);
+            InteractEvent.Invoke(interactedBy);
     }
 
     public void Unhighlight()
     {
         if (UnhighlightEvent != null)
-            UnhighlightEvent();
+            UnhighlightEvent.Invoke();
     }
 }

@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 3811142599455495646}
   - component: {fileID: 2638961960499721203}
   - component: {fileID: 237404063764831433}
+  - component: {fileID: 6059680398251444629}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -288,6 +289,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09203c8e8757fb548b91314f4bafc7f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HighlightEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6059680398251444629}
+        m_TargetAssemblyTypeName: MeshHighlighter, Assembly-CSharp
+        m_MethodName: Highlight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  UnhighlightEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6059680398251444629}
+        m_TargetAssemblyTypeName: MeshHighlighter, Assembly-CSharp
+        m_MethodName: Unhighlight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  InteractEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8150052547966998536}
+        m_TargetAssemblyTypeName: Chest, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2638961960499721203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - data: {fileID: 11400000, guid: dfea2d4c44c0d8549989c0f5a867353f, type: 2}
+  audioSource: {fileID: 0}
 --- !u!82 &237404063764831433
 AudioSource:
   m_ObjectHideFlags: 0
@@ -398,6 +445,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6059680398251444629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922055360968808581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d101efb1a7aa424294a3e8f3b56a70f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderers: []
+  skinnedMeshRenderer:
+  - {fileID: 2497960564616878012}
+  defaultColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  highlightedColor:
+    serializedVersion: 2
+    rgba: 4283541115
+  HighlightEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  UnhighlightEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1222247037050890325
 GameObject:
   m_ObjectHideFlags: 0

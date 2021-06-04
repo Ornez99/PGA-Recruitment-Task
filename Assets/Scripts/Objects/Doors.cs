@@ -9,36 +9,18 @@ public class Doors : MonoBehaviour
     private TwoOptionsWindowFactory twoOptionsWindowFactory;
     private OneOptionWindowFactory oneOptionWindowFactory;
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private List<MeshRenderer> meshRenderers;
     [SerializeField] private ItemData keyData;
     [SerializeField] private Animator animator;
     private bool windowIsOpened = false;
-    private Interactable interactable;
 
     public event Action ChangeDoorStateEvent;
     public bool DoorsOpened { get; private set; }
-
-    private void Start()
-    {
-        interactable = GetComponent<Interactable>();
-        interactable.HighlightEvent += Highlight;
-        interactable.UnhighlightEvent += Unhighlight;
-        interactable.InteractEvent += Interact;
-    }
 
     [Inject]
     public void Construct(TwoOptionsWindowFactory twoOptionsWindowFactory, OneOptionWindowFactory oneOptionWindowFactory)
     {
         this.twoOptionsWindowFactory = twoOptionsWindowFactory;
         this.oneOptionWindowFactory = oneOptionWindowFactory;
-    }
-
-    public void Highlight()
-    {
-        foreach(MeshRenderer meshRenderer in meshRenderers)
-        {
-            meshRenderer.material.SetColor("_Color", new Color32(180, 255, 180, 255));
-        }
     }
 
     public void Interact(GameObject interactedBy)
@@ -50,14 +32,6 @@ public class Doors : MonoBehaviour
                 DisplayOpenDoorsWindow();
             else
                 DisplayClosedDoorsWindow();
-        }
-    }
-
-    public void Unhighlight()
-    {
-        foreach (MeshRenderer meshRenderer in meshRenderers)
-        {
-            meshRenderer.material.SetColor("_Color", Color.white);
         }
     }
 

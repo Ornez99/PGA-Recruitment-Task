@@ -8,29 +8,14 @@ public class Chest : MonoBehaviour
     private bool isOpened = false;
     private bool windowIsOpened = false;
     [SerializeField] private Animator anim;
-    [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
     [SerializeField] private new BoxCollider collider = default;
     [SerializeField] private Equipment equipment;
     [SerializeField] private AudioSource audioSource;
-    private Interactable interactable;
-
-    private void Start()
-    {
-        interactable = GetComponent<Interactable>();
-        interactable.HighlightEvent += Highlight;
-        interactable.UnhighlightEvent += Unhighlight;
-        interactable.InteractEvent += Interact;
-    }
 
     [Inject]
     public void Construct(TwoOptionsWindowFactory twoOptionsWindowFactory)
     {
         this.twoOptionsWindowFactory = twoOptionsWindowFactory;
-    }
-
-    public void Highlight()
-    {
-        skinnedMeshRenderer.material.SetColor("_Color", new Color32(180, 255, 180, 255));
     }
 
     public void Interact(GameObject interactedBy)
@@ -40,11 +25,6 @@ public class Chest : MonoBehaviour
             windowIsOpened = true;
             DisplayOpenChestWindow();
         }
-    }
-
-    public void Unhighlight()
-    {
-        skinnedMeshRenderer.material.SetColor("_Color", Color.white);
     }
 
     public void CloseWindow()
