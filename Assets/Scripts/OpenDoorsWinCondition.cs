@@ -3,8 +3,13 @@ using Zenject;
 
 public class OpenDoorsWinCondition : MonoBehaviour
 {
-    [Inject]
     private MainManager mainManager;
+
+    [Inject]
+    private void Construct(MainManager mainManager)
+    {
+        this.mainManager = mainManager;
+    }
 
     void Start()
     {

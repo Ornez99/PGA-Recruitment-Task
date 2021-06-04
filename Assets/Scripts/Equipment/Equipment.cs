@@ -5,12 +5,17 @@ using Zenject;
 
 public class Equipment : MonoBehaviour
 {
-    [SerializeField]
-    private List<Item> items = new List<Item>();
-
+    [SerializeField] private List<Item> items = new List<Item>();
     [SerializeField] private AudioSource audioSource;
+    private Key.Factory keyFactory;
 
     public List<Item> Items { get => items; }
+
+    [Inject]
+    private void Construct(Key.Factory keyFactory)
+    {
+        this.keyFactory = keyFactory;
+    }
 
     public void AddItem(ItemData itemData)
     {
@@ -28,9 +33,6 @@ public class Equipment : MonoBehaviour
         }
         return false;
     }
-
-    [Inject]
-    Key.Factory keyFactory;
 
     public IEnumerator DropItems()
     {

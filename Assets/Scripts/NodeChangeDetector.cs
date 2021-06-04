@@ -10,7 +10,7 @@ public class NodeChangeDetector : MonoBehaviour
     public event Action<Node> ChangeClosestNodeEvent;
 
     [Inject]
-    public void Construct(Map map)
+    private void Construct(Map map)
     {
         this.map = map;
     }

@@ -3,17 +3,16 @@ using Zenject;
 
 public class Player : MonoBehaviour
 {
-    [Inject]
     private MainManager mainManager;
-
     private IController controller;
     private IMoveable movement;
 
     [Inject]
-    private void Construct (IController controller, IMoveable movement)
+    private void Construct (IController controller, IMoveable movement, MainManager mainManager)
     {
         this.controller = controller;
         this.movement = movement;
+        this.mainManager = mainManager;
     }
 
     private void FixedUpdate()

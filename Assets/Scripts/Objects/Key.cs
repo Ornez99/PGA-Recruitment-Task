@@ -4,16 +4,10 @@ using Zenject;
 public class Key : MonoBehaviour
 {
     private TwoOptionsWindowFactory twoOptionsWindowFactory;
-
     private bool windowIsOpened = false;
-    [SerializeField]
-    private MeshRenderer meshRenderer;
-
-    [SerializeField]
-    private ItemData keyData;
-
+    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private ItemData keyData;
     private GameObject interactedBy;
-
     private Interactable interactable;
 
     private void Start()
@@ -55,8 +49,8 @@ public class Key : MonoBehaviour
 
     public void Unhighlight()
     {
-
-        meshRenderer?.material.SetColor("_Color", Color.white);
+        if (meshRenderer != null)
+            meshRenderer.material.SetColor("_Color", Color.white);
     }
 
     public void CloseWindow()

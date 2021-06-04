@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TimeManager : MonoBehaviour
 {
-    [SerializeField]
-    private FloatVariable bestTime;
-    [SerializeField]
-    private FloatVariable currentTime;
-    [SerializeField]
-    private Text bestTimeText;
-    [SerializeField]
-    private Text currentTimeText;
+    [SerializeField] private FloatVariable bestTime;
+    [SerializeField] private FloatVariable currentTime;
+    [SerializeField] private Text bestTimeText;
+    [SerializeField] private Text currentTimeText;
     private bool countTheTime;
 
     public float BestTime { get => bestTime.Value; }

@@ -5,20 +5,20 @@ using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject StartGameObject;
-    [Inject]
-    private TimeManager timeManager;
+    [SerializeField] private GameObject StartGameObject;
     [SerializeField] private SaveManager saveManager;
+    [SerializeField] private GameObject tryAgainGO;
+    [SerializeField] private Text text_opinion;
+    [SerializeField] private GameObject gratulationsGO;
+    private TimeManager timeManager;
 
     public bool GameStarted { get; set; }
 
-    [SerializeField]
-    private GameObject tryAgainGO;
-    [SerializeField]
-    private Text text_opinion;
-    [SerializeField]
-    private GameObject gratulationsGO;
+    [Inject]
+    private void Construct(TimeManager timeManager)
+    {
+        this.timeManager = timeManager;
+    }
 
     public void StartGame()
     {

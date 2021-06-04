@@ -4,14 +4,16 @@ using Zenject;
 public class InteractableDetector : MonoBehaviour
 {
     private IInteractable currentInteractable;
-    [Inject]
     private IController controller;
+    private MainManager mainManager;
+    [SerializeField] private float interactDistance;
 
     [Inject]
-    private MainManager mainManager;
-
-    [SerializeField]
-    private float interactDistance;
+    private void Construct(IController controller, MainManager mainManager)
+    {
+        this.controller = controller;
+        this.mainManager = mainManager;
+    }
 
     public void Update()
     {

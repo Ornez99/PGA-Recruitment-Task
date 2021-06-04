@@ -3,23 +3,14 @@ using Zenject;
 
 public class SceneInstaller : MonoInstaller<SceneInstaller>
 {
-    [SerializeField]
-    private GameObject chestPrefab;
-    [SerializeField]
-    private GameObject keyPrefab;
-    [SerializeField]
-    private GameObject doorsPrefab;
-    [SerializeField]
-    private Map map;
-
-    [SerializeField]
-    private TwoOptionsWindowFactory twoOptionsWindowFactory;
-    [SerializeField]
-    private OneOptionWindowFactory oneOptionWindowFactory;
-    [SerializeField]
-    private MainManager mainManager;
-    [SerializeField]
-    private TimeManager timeManager;
+    [SerializeField] private GameObject chestPrefab;
+    [SerializeField] private GameObject keyPrefab;
+    [SerializeField] private GameObject doorsPrefab;
+    [SerializeField] private Map map;
+    [SerializeField] private TwoOptionsWindowFactory twoOptionsWindowFactory;
+    [SerializeField] private OneOptionWindowFactory oneOptionWindowFactory;
+    [SerializeField] private MainManager mainManager;
+    [SerializeField] private TimeManager timeManager;
 
     public override void InstallBindings()
     {
@@ -32,6 +23,5 @@ public class SceneInstaller : MonoInstaller<SceneInstaller>
         Container.BindFactory<Chest, Chest.Factory>().FromComponentInNewPrefab(chestPrefab);
         Container.BindFactory<Key, Key.Factory>().FromComponentInNewPrefab(keyPrefab);
         Container.BindFactory<Doors, Doors.Factory>().FromComponentInNewPrefab(doorsPrefab);
-        
     }
 }

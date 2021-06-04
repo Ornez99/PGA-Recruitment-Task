@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 using Zenject;
 
 public class NewUnityInputSystemController : IController
@@ -16,9 +12,7 @@ public class NewUnityInputSystemController : IController
 
     public Vector3 MovementVector3 { get; private set; }
     public float RotationStrength { get; private set; }
-
     public GameObject HoveredGameObject { get; private set; }
-
     public bool MouseClicked { get; private set; }
 
     public NewUnityInputSystemController()
@@ -27,7 +21,7 @@ public class NewUnityInputSystemController : IController
     }
 
     [Inject]
-    public NewUnityInputSystemController(InputActionAsset controls)
+    private void Construct (InputActionAsset controls)
     {
         this.controls = controls;
         inputActionMap = controls.FindActionMap("Player");

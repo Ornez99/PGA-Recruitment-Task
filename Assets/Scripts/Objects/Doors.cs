@@ -8,22 +8,15 @@ public class Doors : MonoBehaviour
 {
     private TwoOptionsWindowFactory twoOptionsWindowFactory;
     private OneOptionWindowFactory oneOptionWindowFactory;
-
     [SerializeField] private AudioSource audioSource;
-
-    [SerializeField]
-    private List<MeshRenderer> meshRenderers;
-    [SerializeField]
-    private ItemData keyData;
-    [SerializeField]
-    private Animator animator;
-
+    [SerializeField] private List<MeshRenderer> meshRenderers;
+    [SerializeField] private ItemData keyData;
+    [SerializeField] private Animator animator;
     private bool windowIsOpened = false;
+    private Interactable interactable;
 
     public event Action ChangeDoorStateEvent;
     public bool DoorsOpened { get; private set; }
-
-    private Interactable interactable;
 
     private void Start()
     {

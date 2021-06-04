@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -7,21 +5,15 @@ public class DefaultMovement : IMoveable
 {
     private float movementSpeed = 2f;
     private float rotationSpeed = 180f;
-    [Inject]
-    private Rigidbody rigidbody;
-    [Inject (Id ="movementTransform")]
-    private Transform transform;
     private SpeedModifier speedModifier;
-
-    public DefaultMovement()
-    {
-
-    }
+    private Rigidbody rigidbody;
+    [Inject (Id ="movementTransform")] private Transform transform;
 
     [Inject]
-    public DefaultMovement(SpeedModifier speedModifier)
+    private void Construct(SpeedModifier speedModifier, Rigidbody rigidbody)
     {
         this.speedModifier = speedModifier;
+        this.rigidbody = rigidbody;
     }
 
     public void Move(Vector3 direction)

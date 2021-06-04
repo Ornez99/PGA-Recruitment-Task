@@ -4,12 +4,16 @@ using Zenject;
 
 public class QuitGame : MonoBehaviour
 {
-    [Inject]
     private TwoOptionsWindowFactory twoOptionsWindowFactory;
-
     private bool windowIsOpened = false;
 
     public event Action QuitEvent;
+
+    [Inject]
+    private void Contstruct(TwoOptionsWindowFactory twoOptionsWindowFactory)
+    {
+        this.twoOptionsWindowFactory = twoOptionsWindowFactory;
+    }
 
     public void Quit()
     {

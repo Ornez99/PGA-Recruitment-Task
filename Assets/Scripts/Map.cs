@@ -1,33 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 public class Map : MonoBehaviour
 {
-    [SerializeField]
-    private int size;
-
-    [SerializeField]
-    private GameObject wall;
-
-    [SerializeField]
-    private GameObject doors;
-
-    [Inject]
-    Chest.Factory chestFactory;
-    [Inject]
-    Doors.Factory doorsFactory;
-
+    [SerializeField] private int size;
+    [SerializeField] private GameObject wall;
+    [SerializeField] private GameObject ground;
     private Node[,] grid;
-
     private Texture2D groundTexture2D;
-
-    [SerializeField]
-    private GameObject ground = null;
-
     private float slowGroundSpeed = 0.2f;
     private float fastGroundSpeed = 1f;
+    Chest.Factory chestFactory;
+    Doors.Factory doorsFactory;
 
     private void Awake()
     {
@@ -39,6 +23,13 @@ public class Map : MonoBehaviour
         SetGroundTextureAndSize();
     }
     
+    [Inject]
+    private void Construct(Chest.Factory chestFactory, Doors.Factory doorsFactory)
+    {
+        this.chestFactory = chestFactory;
+        this.doorsFactory = doorsFactory;
+    }
+
     private void GenerateGrid()
     {
         grid = new Node[size, size];
@@ -145,8 +136,6 @@ public class Map : MonoBehaviour
         }
     }
 
-
-
     private void CreateGroundTexture()
     {
         groundTexture2D = new Texture2D(size, size);
@@ -185,5 +174,4 @@ public class Map : MonoBehaviour
 
         return grid[Mathf.FloorToInt(position.x), Mathf.FloorToInt(position.z)];
     }
-
 }

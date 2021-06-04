@@ -5,19 +5,13 @@ using Zenject;
 public class Chest : MonoBehaviour
 {
     private TwoOptionsWindowFactory twoOptionsWindowFactory;
-
     private bool isOpened = false;
     private bool windowIsOpened = false;
-    [SerializeField]
-    private Animator anim;
-    [SerializeField]
-    private SkinnedMeshRenderer skinnedMeshRenderer;
-    [SerializeField]
-    private new BoxCollider collider = default;
-    [SerializeField]
-    private Equipment equipment;
+    [SerializeField] private Animator anim;
+    [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
+    [SerializeField] private new BoxCollider collider = default;
+    [SerializeField] private Equipment equipment;
     [SerializeField] private AudioSource audioSource;
-
     private Interactable interactable;
 
     private void Start()
@@ -82,7 +76,6 @@ public class Chest : MonoBehaviour
         yield return new WaitForSeconds(1);
         audioSource.Stop();
     }
-    
 
     public class Factory : PlaceholderFactory<Chest> { }
 }
