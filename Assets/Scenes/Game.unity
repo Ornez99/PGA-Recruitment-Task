@@ -307,6 +307,7 @@ GameObject:
   - component: {fileID: 53429195}
   - component: {fileID: 53429194}
   - component: {fileID: 53429197}
+  - component: {fileID: 53429198}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -377,10 +378,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 53429197}
-        m_TargetAssemblyTypeName: QuitGame, Assembly-CSharp
-        m_MethodName: Quit
-        m_Mode: 1
+      - m_Target: {fileID: 53429198}
+        m_TargetAssemblyTypeName: WindowDisplayer, Assembly-CSharp
+        m_MethodName: ShowWindow
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -439,6 +440,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4607514fa6ca8a34f90c8433453aee4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &53429198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53429192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a696539ec563e804292302ec79f64144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Windows:
+  - Title: "Wyjd\u017A z gry"
+    Content: "Czy na pewno chcesz wyj\u015B\u0107 z gry?"
+    Options:
+    - OptionEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 53429198}
+            m_TargetAssemblyTypeName: WindowDisplayer, Assembly-CSharp
+            m_MethodName: CloseWindow
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      Content: "Zosta\u0144 w grze"
+    - OptionEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 53429197}
+            m_TargetAssemblyTypeName: QuitGame, Assembly-CSharp
+            m_MethodName: QuitToWindows
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      Content: "Wyjd\u017A z gry"
 --- !u!1 &73464808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,10 +1440,9 @@ GameObject:
   - component: {fileID: 740654065}
   - component: {fileID: 740654066}
   - component: {fileID: 740654068}
-  - component: {fileID: 740654069}
-  - component: {fileID: 740654071}
   - component: {fileID: 740654070}
   - component: {fileID: 740654072}
+  - component: {fileID: 740654073}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -1481,21 +1529,6 @@ MonoBehaviour:
   tryAgainGO: {fileID: 1283108547}
   text_opinion: {fileID: 1324006885}
   gratulationsGO: {fileID: 664295973}
---- !u!114 &740654069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 740654064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ee5c690d94ad347804dd030c583f3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yesNoWindowGO: {fileID: 2905777387352793007, guid: aa964c01fb2222f4dbb10384635f7e42, type: 3}
-  windowOptionGO: {fileID: 6112637806846841029, guid: b75dcaa8de6feb74599b9b9ced3ec12b, type: 3}
-  windowsContainerGO: {fileID: 1659654034}
 --- !u!114 &740654070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1508,29 +1541,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ab88e8ccb9b504592abbdb200264f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  windowFactory: {fileID: 740654073}
   chestPrefab: {fileID: 922055360968808581, guid: 87e6110312acf674a95a2a080219f8d6, type: 3}
   keyPrefab: {fileID: 5426477492200671259, guid: 61140197f8859224f8111761f0bad5ea, type: 3}
   doorsPrefab: {fileID: 5544704818902259554, guid: 93a1089f6dca4584a9eee5750cad490f, type: 3}
   map: {fileID: 420617624}
-  twoOptionsWindowFactory: {fileID: 740654069}
-  oneOptionWindowFactory: {fileID: 740654071}
   mainManager: {fileID: 740654068}
   timeManager: {fileID: 740654066}
---- !u!114 &740654071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 740654064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5ab5a51c8d1fd4e842c741732c9914, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  oneOptionWindowGO: {fileID: 2905777387352793007, guid: aa964c01fb2222f4dbb10384635f7e42, type: 3}
-  windowOptionGO: {fileID: 6112637806846841029, guid: b75dcaa8de6feb74599b9b9ced3ec12b, type: 3}
-  windowsContainerGO: {fileID: 1659654034}
 --- !u!114 &740654072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1546,6 +1563,21 @@ MonoBehaviour:
   quitGame: {fileID: 53429197}
   bestTime: {fileID: 11400000, guid: 2fd2ba7d17945054fb0b93b6e9a3ac95, type: 2}
   currentTime: {fileID: 11400000, guid: 578db88884908b94cbe48162b1eaeb2f, type: 2}
+--- !u!114 &740654073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740654064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec7c8334b21953e4cb00835e1a1f6a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windowParent: {fileID: 1659654034}
+  windowPrefab: {fileID: 2905777387352793007, guid: 65980b2b74050b341ba75dfa383b15ab, type: 3}
+  optionPrefab: {fileID: 6112637806846841029, guid: b75dcaa8de6feb74599b9b9ced3ec12b, type: 3}
 --- !u!1 &774000544
 GameObject:
   m_ObjectHideFlags: 0

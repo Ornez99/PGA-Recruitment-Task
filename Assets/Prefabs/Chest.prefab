@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 2638961960499721203}
   - component: {fileID: 237404063764831433}
   - component: {fileID: 6059680398251444629}
+  - component: {fileID: 5399065585025756804}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -241,7 +242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1656161561}
-  skinnedMeshRenderer: {fileID: 2497960564616878012}
   collider: {fileID: 2361415007600231548}
   equipment: {fileID: 2638961960499721203}
   audioSource: {fileID: 237404063764831433}
@@ -322,10 +322,10 @@ MonoBehaviour:
   InteractEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8150052547966998536}
-        m_TargetAssemblyTypeName: Chest, Assembly-CSharp
-        m_MethodName: Interact
-        m_Mode: 0
+      - m_Target: {fileID: 5399065585025756804}
+        m_TargetAssemblyTypeName: WindowDisplayer, Assembly-CSharp
+        m_MethodName: ShowWindow
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -472,6 +472,66 @@ MonoBehaviour:
   UnhighlightEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5399065585025756804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922055360968808581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a696539ec563e804292302ec79f64144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Windows:
+  - Title: Skrzynia
+    Content: "Czy chcesz j\u0105 otworzy\u0107?"
+    Options:
+    - OptionEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 8150052547966998536}
+            m_TargetAssemblyTypeName: Chest, Assembly-CSharp
+            m_MethodName: OpenChest
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 5399065585025756804}
+            m_TargetAssemblyTypeName: WindowDisplayer, Assembly-CSharp
+            m_MethodName: CloseWindow
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      Content: "Otw\xF3rz"
+    - OptionEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 5399065585025756804}
+            m_TargetAssemblyTypeName: WindowDisplayer, Assembly-CSharp
+            m_MethodName: CloseWindow
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      Content: Nie otwieraj
 --- !u!1 &1222247037050890325
 GameObject:
   m_ObjectHideFlags: 0

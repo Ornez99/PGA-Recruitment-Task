@@ -4,40 +4,9 @@ using Zenject;
 
 public class QuitGame : MonoBehaviour
 {
-    private TwoOptionsWindowFactory twoOptionsWindowFactory;
-    private bool windowIsOpened = false;
-
     public event Action QuitEvent;
 
-    [Inject]
-    private void Contstruct(TwoOptionsWindowFactory twoOptionsWindowFactory)
-    {
-        this.twoOptionsWindowFactory = twoOptionsWindowFactory;
-    }
-
-    public void Quit()
-    {
-        if (windowIsOpened == false)
-        {
-            windowIsOpened = true;
-            DisplayQuitGameWindow();
-        }
-    }
-
-    private void DisplayQuitGameWindow()
-    {
-        WindowOption[] options = new WindowOption[2];
-        options[0] = new WindowOption(QuitToWindows, "Tak");
-        options[1] = new WindowOption(CloseWindow, "Nie");
-        twoOptionsWindowFactory.CreateWindow("Wyjdz z gry", "Czy na pewno chcesz wyjsc z gry?", options);
-    }
-
-    private void CloseWindow()
-    {
-        windowIsOpened = false;
-    }
-
-    private void QuitToWindows()
+    public void QuitToWindows()
     {
         if (QuitEvent != null)
             QuitEvent();

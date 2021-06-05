@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5388631669141172809}
   - component: {fileID: -4796619959617532960}
   - component: {fileID: 4243345551025663533}
+  - component: {fileID: -897315055596491717}
   m_Layer: 0
   m_Name: Doors
   m_TagString: Untagged
@@ -65,6 +66,8 @@ MonoBehaviour:
   audioSource: {fileID: -4796619959617532960}
   keyData: {fileID: 11400000, guid: dfea2d4c44c0d8549989c0f5a867353f, type: 2}
   animator: {fileID: 2409639098300128151}
+  windowDisplayer: {fileID: -897315055596491717}
+  boxCollider: {fileID: 5544704818902259555}
 --- !u!114 &162575008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,8 +127,20 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5544704818902259553}
         m_TargetAssemblyTypeName: Doors, Assembly-CSharp
-        m_MethodName: Interact
+        m_MethodName: SetInteractedByGameObject
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5544704818902259553}
+        m_TargetAssemblyTypeName: Doors, Assembly-CSharp
+        m_MethodName: TryToOpenDoors
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -258,6 +273,85 @@ MonoBehaviour:
   UnhighlightEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-897315055596491717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5544704818902259554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a696539ec563e804292302ec79f64144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Windows:
+  - Title: Drzwi
+    Content: "S\u0105 zamkni\u0119te, potrzebujesz klucza."
+    Options:
+    - OptionEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: -897315055596491717}
+            m_TargetAssemblyTypeName: WindowDisplayer, Assembly-CSharp
+            m_MethodName: CloseWindow
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      Content: "Odejd\u017A"
+  - Title: Drzwi
+    Content: "Czy chcesz otworzy\u0107 drzwi?"
+    Options:
+    - OptionEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 5544704818902259553}
+            m_TargetAssemblyTypeName: Doors, Assembly-CSharp
+            m_MethodName: OpenDoors
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: -897315055596491717}
+            m_TargetAssemblyTypeName: WindowDisplayer, Assembly-CSharp
+            m_MethodName: CloseWindow
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      Content: "Otw\xF3rz"
+    - OptionEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: -897315055596491717}
+            m_TargetAssemblyTypeName: WindowDisplayer, Assembly-CSharp
+            m_MethodName: CloseWindow
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      Content: "Odejd\u017A"
 --- !u!1 &6333199473376363205
 GameObject:
   m_ObjectHideFlags: 0
